@@ -5,6 +5,8 @@ const App = () => {
   const [todayContent, setTodayContent] = useState(null)
   const [loading, setLoading] = useState(true)
   const [view, setView] = useState('today') // 'today' or 'archive'
+  const [email, setEmail] = useState('')
+  const [subStatus, setSubStatus] = useState('idle')
 
   useEffect(() => {
     fetch('/daily_content.json')
@@ -21,6 +23,26 @@ const App = () => {
         setLoading(false)
       })
   }, [])
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault()
+    setSubStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (res.ok) {
+        setSubStatus('success')
+        setEmail('')
+      } else {
+        setSubStatus('error')
+      }
+    } catch {
+      setSubStatus('error')
+    }
+  }
 
   if (loading) {
     return (
@@ -95,16 +117,25 @@ const App = () => {
           <div className="bg-white rounded-3xl shadow-sm p-8 border border-brand-accent/20 mb-8">
             <h3 className="text-xl font-serif font-semibold mb-2">Join the Community</h3>
             <p className="text-brand-soft mb-6">Get daily encouragement delivered to your inbox.</p>
-            <form className="flex flex-col md:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col md:flex-row gap-3 max-w-md mx-auto flex-wrap justify-center" onSubmit={handleSubscribe}>
               <input 
                 type="email" 
                 placeholder="Your email address" 
-                className="flex-1 px-6 py-3 rounded-full border border-brand-accent/30 focus:outline-none focus:border-brand-soft bg-brand-warm/30"
+                className="flex-1 px-6 py-3 rounded-full border border-brand-accent/30 focus:outline-none focus:border-brand-soft bg-brand-warm/30 min-w-[240px]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={subStatus === 'loading'}
               />
-              <button type="submit" className="bg-brand-soft text-brand-warm px-8 py-3 rounded-full font-semibold hover:bg-brand-text transition-colors">
-                Subscribe
+              <button 
+                type="submit" 
+                className="bg-brand-soft text-brand-warm px-8 py-3 rounded-full font-semibold hover:bg-brand-text transition-colors disabled:opacity-50"
+                disabled={subStatus === 'loading'}
+              >
+                {subStatus === 'loading' ? 'Joining...' : 'Subscribe'}
               </button>
+              {subStatus === 'success' && <p className="text-green-700 text-sm mt-2 w-full">You're in! Welcome to Raising Today. 💛</p>}
+              {subStatus === 'error' && <p className="text-red-600 text-sm mt-2 w-full">Something went wrong. Try again?</p>}
             </form>
           </div>
 
