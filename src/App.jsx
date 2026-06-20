@@ -4,7 +4,7 @@ const App = () => {
   const [content, setContent] = useState([])
   const [todayContent, setTodayContent] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [view, setView] = useState('today')
+  const [view, setView] = useState('today') // 'today' or 'archive'
   const [email, setEmail] = useState('')
   const [subStatus, setSubStatus] = useState('idle')
 
@@ -41,7 +41,6 @@ const App = () => {
         <nav className="mt-8 flex justify-center gap-6 text-sm font-medium uppercase tracking-widest text-brand-soft">
           <button onClick={() => setView('today')} className={`pb-1 border-b-2 transition-colors ${view === 'today' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Today</button>
           <button onClick={() => setView('archive')} className={`pb-1 border-b-2 transition-colors ${view === 'archive' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Archive</button>
-          <button onClick={() => setView('shop')} className={`pb-1 border-b-2 transition-colors ${view === 'shop' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Shop</button>
         </nav>
       </header>
       <main>
@@ -60,7 +59,7 @@ const App = () => {
               </div>
             </div>
           ) : <p className="text-center text-brand-soft">No content for today. Check back tomorrow!</p>
-        ) : view === 'archive' ? (
+        ) : (
           <div className="space-y-4">
             <h2 className="text-xl font-serif font-semibold mb-6">Past Reflections</h2>
             {content.map((item, i) => (
@@ -71,40 +70,8 @@ const App = () => {
               </button>
             ))}
           </div>
-        ) : (
-          <div className="space-y-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-serif font-semibold mb-3">Shop Our Favorites</h2>
-              <p className="text-brand-soft italic">Curated essentials for your parenting journey</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
-                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">📚</div>
-                <h3 className="text-lg font-serif font-semibold mb-1">The Whole-Brain Child</h3>
-                <p className="text-sm text-brand-soft mb-4">Practical strategies to nurture your child's developing mind.</p>
-                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">View on Amazon</a>
-              </div>
-              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
-                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">🎨</div>
-                <h3 className="text-lg font-serif font-semibold mb-1">Sensory Play Kit</h3>
-                <p className="text-sm text-brand-soft mb-4">Everything you need for exploratory sensory play at home.</p>
-                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">View Product</a>
-              </div>
-              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
-                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">🌿</div>
-                <h3 className="text-lg font-serif font-semibold mb-1">Calm & Focus Blend</h3>
-                <p className="text-sm text-brand-soft mb-4">A gentle essential oil blend for mindful parenting moments.</p>
-                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">Shop Wellness</a>
-              </div>
-              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
-                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">✨</div>
-                <h3 className="text-lg font-serif font-semibold mb-1">Mindfulness Cards</h3>
-                <p className="text-sm text-brand-soft mb-4">52 simple prompts for daily connection and presence.</p>
-                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">Order Now</a>
-              </div>
-            </div>
-          </div>
         )}
+
         <section className="mt-16 border-t border-brand-accent/30 pt-12 text-center">
           <div className="bg-white rounded-3xl shadow-sm p-8 border border-brand-accent/20 mb-8">
             <h3 className="text-xl font-serif font-semibold mb-2">Join the Community</h3>
@@ -120,11 +87,65 @@ const App = () => {
               {subStatus === 'error' && <p className="text-red-600 text-sm mt-2">Something went wrong.</p>}
             </form>
           </div>
-          <div className="bg-brand-accent/10 p-8 rounded-3xl">
+          <div className="bg-brand-accent/10 p-8 rounded-3xl mb-8">
             <h3 className="text-xl font-serif font-semibold mb-4">Go Premium</h3>
             <p className="text-brand-soft mb-6">Unlock weekly deep reflections, audio versions, and printable activity cards for $4.99/month.</p>
             <button className="bg-brand-soft text-brand-warm px-10 py-4 rounded-full font-semibold hover:bg-brand-text">Try Raising Today Premium</button>
           </div>
+        </section>
+
+        {/* Shop Our Favorites Section */}
+        <section className="mt-8 border-t border-brand-accent/30 pt-12">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl font-serif font-semibold mb-2">Our Favorite Things</h3>
+            <p className="text-brand-soft italic">Curated essentials we genuinely love and use.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* Product 1: Book */}
+            <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
+              <h4 className="font-serif font-semibold text-lg mb-2">The Whole-Brain Child</h4>
+              <p className="text-sm text-brand-soft mb-4">A wonderful guide to understanding your child's developing mind and nurturing emotional intelligence.</p>
+              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
+              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+                Buy on Amazon
+              </a>
+            </div>
+
+            {/* Product 2: Sensory Toy */}
+            <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
+              <h4 className="font-serif font-semibold text-lg mb-2">Calm Down Sensory Bottle</h4>
+              <p className="text-sm text-brand-soft mb-4">A simple, mesmerizing tool to help little ones find a moment of focus and calm during big feelings.</p>
+              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
+              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+                Buy on Amazon
+              </a>
+            </div>
+
+            {/* Product 3: Self-care */}
+            <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
+              <h4 className="font-serif font-semibold text-lg mb-2">Daily Gratitude Journal</h4>
+              <p className="text-sm text-brand-soft mb-4">A gentle space to record small wins and moments of joy in the beautiful chaos of parenting.</p>
+              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
+              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+                Buy on Amazon
+              </a>
+            </div>
+
+            {/* Product 4: Practical Tool */}
+            <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
+              <h4 className="font-serif font-semibold text-lg mb-2">White Noise Sound Machine</h4>
+              <p className="text-sm text-brand-soft mb-4">Our favorite tool for creating a consistent, peaceful sleep environment for the whole family.</p>
+              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
+              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+                Buy on Amazon
+              </a>
+            </div>
+          </div>
+          
+          <p className="text-[10px] text-brand-soft/60 text-center italic">
+            As an Amazon Associate we earn from qualifying purchases.
+          </p>
         </section>
       </main>
       <footer className="mt-20 text-center text-xs text-brand-soft/60 pb-8">&copy; 2026 Raising Today.</footer>
