@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-warm: #fdf6f0;
+  --color-brand-soft: #8d7b68;
+  --color-brand-accent: #c8b6a6;
+  --color-brand-text: #4a3f35;
+}
+
+body {
+  @apply bg-brand-warm text-brand-text font-sans;
+}
