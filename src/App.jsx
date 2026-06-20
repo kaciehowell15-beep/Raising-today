@@ -39,8 +39,9 @@ const App = () => {
         <h1 className="text-4xl font-serif font-bold mb-2">Raising Today</h1>
         <p className="text-brand-soft italic">A moment of peace in the parenting journey</p>
         <nav className="mt-8 flex justify-center gap-6 text-sm font-medium uppercase tracking-widest text-brand-soft">
-          <button onClick={() => setView('today')} className={`pb-1 border-b-2 ${view === 'today' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Today</button>
-          <button onClick={() => setView('archive')} className={`pb-1 border-b-2 ${view === 'archive' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Archive</button>
+          <button onClick={() => setView('today')} className={`pb-1 border-b-2 transition-colors ${view === 'today' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Today</button>
+          <button onClick={() => setView('archive')} className={`pb-1 border-b-2 transition-colors ${view === 'archive' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Archive</button>
+          <button onClick={() => setView('shop')} className={`pb-1 border-b-2 transition-colors ${view === 'shop' ? 'border-brand-soft text-brand-text' : 'border-transparent hover:text-brand-text'}`}>Shop</button>
         </nav>
       </header>
       <main>
@@ -58,17 +59,50 @@ const App = () => {
                 )}
               </div>
             </div>
-          ) : <p className="text-center text-brand-soft">No content for today.</p>
-        ) : (
+          ) : <p className="text-center text-brand-soft">No content for today. Check back tomorrow!</p>
+        ) : view === 'archive' ? (
           <div className="space-y-4">
             <h2 className="text-xl font-serif font-semibold mb-6">Past Reflections</h2>
             {content.map((item, i) => (
               <button key={i} onClick={() => { setTodayContent(item); setView('today') }}
-                className="w-full text-left bg-white p-6 rounded-2xl shadow-sm border border-brand-accent/10 hover:border-brand-accent">
+                className="w-full text-left bg-white p-6 rounded-2xl shadow-sm border border-brand-accent/10 hover:border-brand-accent transition-all group">
                 <p className="text-xs text-brand-soft uppercase tracking-widest mb-1">{item.date}</p>
-                <h3 className="text-lg font-serif font-medium">{item.title}</h3>
+                <h3 className="text-lg font-serif font-medium group-hover:text-brand-soft transition-colors">{item.title}</h3>
               </button>
             ))}
+          </div>
+        ) : (
+          <div className="space-y-8">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl font-serif font-semibold mb-3">Shop Our Favorites</h2>
+              <p className="text-brand-soft italic">Curated essentials for your parenting journey</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
+                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">📚</div>
+                <h3 className="text-lg font-serif font-semibold mb-1">The Whole-Brain Child</h3>
+                <p className="text-sm text-brand-soft mb-4">Practical strategies to nurture your child's developing mind.</p>
+                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">View on Amazon</a>
+              </div>
+              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
+                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">🎨</div>
+                <h3 className="text-lg font-serif font-semibold mb-1">Sensory Play Kit</h3>
+                <p className="text-sm text-brand-soft mb-4">Everything you need for exploratory sensory play at home.</p>
+                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">View Product</a>
+              </div>
+              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
+                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">🌿</div>
+                <h3 className="text-lg font-serif font-semibold mb-1">Calm & Focus Blend</h3>
+                <p className="text-sm text-brand-soft mb-4">A gentle essential oil blend for mindful parenting moments.</p>
+                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">Shop Wellness</a>
+              </div>
+              <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/20 hover:shadow-md transition-all">
+                <div className="h-40 bg-brand-warm rounded-2xl mb-4 flex items-center justify-center text-4xl">✨</div>
+                <h3 className="text-lg font-serif font-semibold mb-1">Mindfulness Cards</h3>
+                <p className="text-sm text-brand-soft mb-4">52 simple prompts for daily connection and presence.</p>
+                <a href="#" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-accent/20 transition-colors">Order Now</a>
+              </div>
+            </div>
           </div>
         )}
         <section className="mt-16 border-t border-brand-accent/30 pt-12 text-center">
