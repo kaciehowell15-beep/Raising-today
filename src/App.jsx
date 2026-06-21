@@ -106,8 +106,7 @@ const App = () => {
             <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
               <h4 className="font-serif font-semibold text-lg mb-2">The Whole-Brain Child</h4>
               <p className="text-sm text-brand-soft mb-4">A wonderful guide to understanding your child's developing mind and nurturing emotional intelligence.</p>
-              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
-              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+              <a href="https://www.amazon.com/s?k=the+whole+brain+child+book&tag=kaciebhowell-20" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
                 Buy on Amazon
               </a>
             </div>
@@ -116,8 +115,7 @@ const App = () => {
             <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
               <h4 className="font-serif font-semibold text-lg mb-2">Calm Down Sensory Bottle</h4>
               <p className="text-sm text-brand-soft mb-4">A simple, mesmerizing tool to help little ones find a moment of focus and calm during big feelings.</p>
-              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
-              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+              <a href="https://www.amazon.com/s?k=calm+down+sensory+bottle+for+kids&tag=kaciebhowell-20" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
                 Buy on Amazon
               </a>
             </div>
@@ -126,8 +124,7 @@ const App = () => {
             <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
               <h4 className="font-serif font-semibold text-lg mb-2">Daily Gratitude Journal</h4>
               <p className="text-sm text-brand-soft mb-4">A gentle space to record small wins and moments of joy in the beautiful chaos of parenting.</p>
-              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
-              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+              <a href="https://www.amazon.com/s?k=parenting+gratitude+journal&tag=kaciebhowell-20" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
                 Buy on Amazon
               </a>
             </div>
@@ -136,8 +133,7 @@ const App = () => {
             <div className="bg-white rounded-3xl shadow-sm p-6 border border-brand-accent/10 hover:shadow-md transition-all text-center">
               <h4 className="font-serif font-semibold text-lg mb-2">White Noise Sound Machine</h4>
               <p className="text-sm text-brand-soft mb-4">Our favorite tool for creating a consistent, peaceful sleep environment for the whole family.</p>
-              {/* TODO: Replace PLACEHOLDER with real affiliate tag */}
-              <a href="https://amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
+              <a href="https://www.amazon.com/s?k=white+noise+sound+machine+for+baby&tag=kaciebhowell-20" target="_blank" rel="noopener noreferrer" className="inline-block bg-brand-warm text-brand-text px-6 py-2 rounded-full text-sm font-semibold hover:bg-brand-accent/20 transition-colors">
                 Buy on Amazon
               </a>
             </div>
