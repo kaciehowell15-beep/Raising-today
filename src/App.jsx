@@ -89,8 +89,17 @@ const App = () => {
           </div>
           <div className="bg-brand-accent/10 p-8 rounded-3xl mb-8">
             <h3 className="text-xl font-serif font-semibold mb-4">Go Premium</h3>
-            <p className="text-brand-soft mb-6">Unlock weekly deep reflections, audio versions, and printable activity cards for $4.99/month.</p>
-            <button className="bg-brand-soft text-brand-warm px-10 py-4 rounded-full font-semibold hover:bg-brand-text">Try Raising Today Premium</button>
+            <p className="text-brand-soft mb-6">Unlock weekly deep reflections, audio versions, and printable activity cards.</p>
+            <div className="flex flex-col md:flex-row justify-center gap-4">
+              <a href="https://buy.stripe.com/28E14m27UbHzefS0G0cMM00" target="_blank" rel="noopener noreferrer" 
+                className="bg-brand-warm text-brand-text px-8 py-3 rounded-full font-semibold hover:bg-brand-accent/20 transition-colors">
+                Monthly ($4.99)
+              </a>
+              <a href="https://buy.stripe.com/bJe28q3bYh1Tc7KdsMcMM01" target="_blank" rel="noopener noreferrer" 
+                className="bg-brand-soft text-brand-warm px-8 py-3 rounded-full font-semibold hover:bg-brand-text transition-all transform hover:scale-105 shadow-sm">
+                Yearly ($39 — Save $20)
+              </a>
+            </div>
           </div>
         </section>
 
